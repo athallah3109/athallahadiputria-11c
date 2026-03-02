@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>formulir Testimoni -pagecloud </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>pagecloud</h1>
+        <nav>
+            <a href="index.html">Beranda</a>
+            <a href="produk.html">Produk</a>
+            <a href="bedah-buku.html">Bedah Buku</a>
+            <a href="testimoni.html">Testimoni</a>
+            <a href="tampil testimoni.html">testimoni pembeli</a>
+            <a href="kontak.html">kontak</a>
+            <a href="event.html">event</a>
+        </nav>
+    </header>
+
+    <main class="formulir">
+        <h2>berikan testimoni anda</h2>
+        <form id="form testimoni">
+            <label for="nama">Nama:</label>
+            <input type="text" id="nama" name="nama" required placeholder="nama lengkap">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required placeholder="email@example.com>">
+
+            <label for="pesan">testimoni anda:</label>
+            <textarea id="pesan" name="pesan" required placeholder="=tulis pengalaman anda..." rows="5"></textarea>
+
+            <button type="submit">kirim testimoni</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 page cloud </p>
+    </footer>
+
+<script>
+    document.getElementById('form testimoni').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const nama=document.getElementById('nama').value;
+        const email=document.getElementById('email').value;
+        const pesan=document.getElementById('pesan').value;
+        const databaru= {nama, email,pesan};
+        //Ambil list dari localStrorage
+        const testimonilist= JSON.parse(localstorage.getItem('testimonilist'))||{};
+        //tambahkan testimoni baru
+        testimonilist/push(databaru);
+        //simpan kembali ke localstorage
+        localstorage.setItem('testimonolist',JSON.stringify(testimonilist));
+
+        //arahkan ke halaman konfirmasi 
+        window.location.href='proses-testimoni.html';
+       });
+       </script>
